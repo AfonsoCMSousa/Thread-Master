@@ -100,7 +100,7 @@ Assigns a new job to the thread workers.
 - `include/threadlib/threadlib.h`: Header file for the thread library.
 - `include/threadlib/threadlib.c`: Implementation of the thread library.
 
-### A big thanks to:
+## A big thanks to:
 - Professor **Marco Ferreira** - <marco.ferreira@ipleiria.pt>
 - Professor **Patrício Domingues**  - <patricio.domingues@ipleiria.pt> 
 
