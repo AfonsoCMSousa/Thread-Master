@@ -104,3 +104,8 @@ Assigns a new job to the thread workers.
 
 ## Licence:
 This content falls under [Apache License Version 2.0](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/LICENSE)
+
+## Contact
+Have questions or suggestions? Feel free to reach out!
+- 📧 Email: <afonsoclerigomendessousa@gmail.com>
+- 🐙 GitHub: AfonsoCMSousa
