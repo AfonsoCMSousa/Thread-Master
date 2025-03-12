@@ -1,4 +1,4 @@
-#include "threadlib/threadlib.h"
+#include "threadlib.h"
 
 int __max_threads;
 unsigned char isThreadMasterRunning = 0;
@@ -120,7 +120,7 @@ void thread_master_get_status()
         printf("Thread Master - Max Threads: %d\n", __max_threads);
         printf("Param: %d\n", param->max_threads);
 #endif // DEBUG
-        sleep(1);
+        sleep_ms(100);
     } while (__max_threads == 0);
 
     pthread_mutex_lock(&param->mutex);
