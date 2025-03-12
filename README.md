@@ -7,6 +7,8 @@ Hey, I'm Afonso, a passionate developer who loves low-level C/C++ and even some 
 I originally created this library as a proof-of-concept, but it quickly evolved into something much bigger.  
 If you're interested in learning how it works, check out the [GUIDE.md](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/GUIDE.md) and the `main.c` file, along with all the headers in the `include/` directory.
 
+Of course! Feel free to create a new [issue](https://github.com/AfonsoCMSousa/Thread-Master/issues) if you ever find any when using the library.
+
 ---
 
 ## Features
