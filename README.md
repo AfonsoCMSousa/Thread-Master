@@ -1,9 +1,106 @@
 # Thread-Master
-A Thread Manager for C, that manages worker threads, each executing a specified task, or multiple of the same.
+A high-level thread management library for C that abstracts the complexity of working with pthreads. It allows easy creation, assignment, and management of worker threads.
 
-# Intruduction
-Hey, Im Afonso, a humble developer that loves low-level C/C++, even some assembly! 
+## Introduction
+Hey, I'm Afonso, a passionate developer who loves low-level C/C++ and even some assembly!  
 
-I create this library, and what started has a prof-of-concept soon became something much bigger...
-Well. Without much longer. Check out the [GUIDE.md](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/GUIDE.md) and the files `main.c` wicth all the files in `include` to learn how everything works.
+I originally created this library as a proof-of-concept, but it quickly evolved into something much bigger.  
+If you're interested in learning how it works, check out the [GUIDE.md](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/GUIDE.md) and the `main.c` file, along with all the headers in the `include/` directory.
 
+---
+
+## Features
+- **Thread Pool Management** – Efficiently manages a pool of worker threads.
+- **Dynamic Task Assignment** – Assign tasks to available threads dynamically.
+- **Thread Safety** – Built-in mutex handling for safe multithreading.
+- **Lightweight & Fast** – Optimized for minimal overhead.
+- **Cross-Platform Compatibility** – Works on Linux and Windows (via pthreads).
+
+---
+
+## Getting Started
+
+### Requirements
+- **C Compiler** (GCC, Clang, MSVC)
+- **CMake** (optional, for easier builds)
+- **pthreads** (POSIX thread library)
+
+### Installation
+Clone the repository:
+```sh
+git clone https://github.com/AfonsoCMSousa/Thread-Master.git
+cd Thread-Master
+```
+
+Or compiple manually:
+```sh
+gcc -o my_program src/main.c include/threadlib/threadlib.c -pthread
+```
+
+## All Available Functions
+
+### thread_master_init
+
+```c
+void thread_master_init(int max_threads, void *(*__thread_worker__)(void *), void *custom_params);
+```
+Initializes the thread master with a specified number of threads and a worker function.
+
+- `max_threads`: The maximum number of threads to be used.
+- `__thread_worker__`: The function pointer to the worker function that each thread will execute.
+- `custom_params`: Custom parameters to be passed to the worker function.
+
+### thread_mutex_init
+
+```c
+void thread_mutex_init(pthread_mutex_t *mutex);
+```
+Initializes a mutex.
+
+- `mutex`: Pointer to the mutex to be initialized.
+
+### thread_mutex_destroy
+
+```c
+void thread_mutex_destroy(pthread_mutex_t *mutex);
+```
+Destroys a mutex.
+
+- `mutex`: Pointer to the mutex to be destroyed.
+
+### thread_master_free
+
+```c
+void thread_master_free();
+```
+Frees resources allocated by the thread master.
+
+### thread_master_get_status
+
+```c
+void thread_master_get_status();
+```
+Retrieves the status of the thread master.
+
+### thread_master_assign_new_job
+
+```c
+void thread_master_assign_new_job(void *(*__thread_worker__)(void *), void *custom_params);
+```
+Assigns a new job to the thread workers.
+
+- `__thread_worker__`: The function pointer to the worker function that each thread will execute.
+- `custom_params`: Custom parameters to be passed to the worker function.
+
+## File Structure
+
+- `src/main.c`: Contains the main function and the thread worker example of use.
+- `include/threadlib/threadlib.h`: Header file for the thread library.
+- `include/threadlib/threadlib.c`: Implementation of the thread library.
+
+### A big thanks to:
+- Professor **Marco Ferreira** - <marco.ferreira@ipleiria.pt>
+- Professor **Patrício Domingues**  - <patricio.domingues@ipleiria.pt> 
+
+## Licence:
+This content falls under [Apache License Version 2.0](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/LICENSE)
