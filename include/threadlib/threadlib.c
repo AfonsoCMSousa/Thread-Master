@@ -12,7 +12,7 @@ void __thread_mutex_init__(pthread_mutex_t *mutex)
 {
     if (pthread_mutex_init(mutex, NULL) != 0)
     {
-        fprintf(stderr, "Error: Failed to initialize mutex.\n");
+        fprintf(stderr, "Thread Master - Error: Failed to initialize mutex.\n");
         exit(EXIT_FAILURE);
     }
 }
@@ -26,7 +26,7 @@ void __thread_mutex_destroy__(pthread_mutex_t *mutex)
 {
     if (pthread_mutex_destroy(mutex) != 0)
     {
-        fprintf(stderr, "Error: Failed to destroy mutex.\n");
+        fprintf(stderr, "Thread Master - Error: Failed to destroy mutex.\n");
         exit(EXIT_FAILURE);
     }
 }
@@ -43,7 +43,7 @@ void *__thread_master_init__(void *params)
     listT = (thread *)malloc(param->max_threads * sizeof(thread));
     if (listT == NULL)
     {
-        fprintf(stderr, "Tread Master - Error: Failed to allocate memory for thread pool.\n");
+        fprintf(stderr, "Thread Master - Error: Failed to allocate memory for thread pool.\n");
         return NULL;
     }
 
@@ -62,22 +62,6 @@ void *__thread_master_init__(void *params)
     printf("Thread Master - Success: Ready.\n");
 
     thread_master_assign_new_job(param->__thread_worker__, param->custom_params);
-
-    /*  for (int i = 0; i < param->max_threads; i++)
-     {
-         // 3 - Create the threads
-         if (pthread_create(&(listT[i].thread), NULL, param->__thread_worker__, &(listT[i].worker_param)) != 0)
-         {
-             fprintf(stderr, "Error: Failed to create thread %d.\n", i + 1);
-             exit(EXIT_FAILURE);
-         }
-         listT[i].worker_param.status = BUSY;
-     }
-
-    for (int i = 0; i < param->max_threads; i++)
-    {
-        pthread_join(listT[i].thread, NULL);
-    }*/
     return NULL;
 }
 
@@ -97,7 +81,7 @@ void thread_master_init(int max_threads, void *(*__thread_worker__)(void *), voi
 
     if (pthread_create(&thread_master, NULL, __thread_master_init__, (void *)param) != 0)
     {
-        fprintf(stderr, "Error: Failed to create thread master.\n");
+        fprintf(stderr, "Thread Master - Error: Failed to create thread master.\n");
         exit(EXIT_FAILURE);
     }
     isThreadMasterRunning = 1;
