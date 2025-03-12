@@ -39,6 +39,8 @@ Or compiple manually:
 gcc -o my_program src/main.c include/threadlib/threadlib.c -pthread
 ```
 
+Check the [releases](https://github.com/AfonsoCMSousa/Thread-Master/releases/latest) for a detailed instalation guide and some libraries (.a) (.dll) or even (.lib).
+
 ## All Available Functions
 
 ### thread_master_init
