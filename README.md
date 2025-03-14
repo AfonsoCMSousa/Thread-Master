@@ -103,8 +103,8 @@ Assigns a new job to the thread workers.
 - `include/threadlib/threadlib.c`: Implementation of the thread library.
 
 ## A big thanks to:
-- Professor **Marco Ferreira** - <marco.ferreira@ipleiria.pt>
-- Professor **Patrício Domingues**  - <patricio.domingues@ipleiria.pt> 
+- Professor **Marco Ferreira**
+- Professor **Patrício Domingues**
 
 ## Licence:
 This content falls under [Apache License Version 2.0](https://github.com/AfonsoCMSousa/Thread-Master/blob/master/LICENSE)
