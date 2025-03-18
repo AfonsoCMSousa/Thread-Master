@@ -21,6 +21,8 @@ void *thread_worker(void *params)
         return NULL;
     }
 
+    sleep_ms(100);
+
     custom->a += 10;
 
     printf("Thread %d - WE ARE RUNNING THIS TASK\n", param->thread_id);
@@ -33,9 +35,17 @@ int main(void)
 {
     custom_params_t *custom_params = (custom_params_t *)malloc(sizeof(custom_params_t));
     custom_params->a = 0;
-    thread_master_init(MAX_THREAD, thread_worker, NULL);
+    thread_master_init(MAX_THREAD, NULL, custom_params);
+
+    sleep_ms(1000);
+
+    thread_master_assign_new_job(thread_worker, custom_params);
+    thread_master_assign_new_job(thread_worker, custom_params);
+    thread_master_assign_new_job(thread_worker, custom_params);
 
     thread_master_free();
     printf("Custom Params: %d\n", custom_params->a);
+
+    free(custom_params);
     return 0;
 }

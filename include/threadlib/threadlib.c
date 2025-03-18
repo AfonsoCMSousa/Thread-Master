@@ -61,7 +61,15 @@ void *__thread_master_init__(void *params)
 
     printf("Thread Master - Success: Ready.\n");
 
-    thread_master_assign_new_job(param->__thread_worker__, param->custom_params);
+    if (param->__thread_worker__ == NULL)
+    {
+        fprintf(stderr, "Thread Master - Info: No task given, use \"thread_master_assign_new_job\" to run a task\n");
+    }
+    else
+    {
+        thread_master_assign_new_job(param->__thread_worker__, param->custom_params);
+    }
+
     return NULL;
 }
 
@@ -84,6 +92,7 @@ void thread_master_init(int max_threads, void *(*__thread_worker__)(void *), voi
         fprintf(stderr, "Thread Master - Error: Failed to create thread master.\n");
         exit(EXIT_FAILURE);
     }
+
     isThreadMasterRunning = 1;
 
     pthread_detach(thread_master);
